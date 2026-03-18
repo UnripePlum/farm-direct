@@ -74,8 +74,8 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }
   const currentSlide = SLIDES[currentIndex];
 
   return (
-    <View style={[styles.container, { backgroundColor: currentSlide.bg }]}>
-      <TouchableOpacity style={styles.skipButton} onPress={handleComplete}>
+    <View testID="screen-onboarding" style={[styles.container, { backgroundColor: currentSlide.bg }]}>
+      <TouchableOpacity testID="onboarding-skip-button" style={styles.skipButton} onPress={handleComplete}>
         <Text style={styles.skipText}>건너뛰기</Text>
       </TouchableOpacity>
 
@@ -88,7 +88,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }
         scrollEventThrottle={16}
       >
         {SLIDES.map((slide, index) => (
-          <View key={index} style={[styles.slide, { backgroundColor: slide.bg }]}>
+          <View key={index} testID={`onboarding-slide-${index}`} style={[styles.slide, { backgroundColor: slide.bg }]}>
             <View style={[styles.iconCircle, { backgroundColor: slide.iconBg }]}>
               <Ionicons name={slide.icon} size={80} color={slide.iconColor} />
             </View>
@@ -112,6 +112,7 @@ export const OnboardingScreen: React.FC<OnboardingScreenProps> = ({ navigation }
         </View>
 
         <TouchableOpacity
+          testID="onboarding-next-button"
           style={[styles.nextButton, { backgroundColor: currentSlide.iconColor }]}
           onPress={handleNext}
           activeOpacity={0.85}

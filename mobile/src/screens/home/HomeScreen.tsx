@@ -47,7 +47,7 @@ export const HomeScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.safeArea} edges={['top']}>
+    <SafeAreaView testID="screen-home" style={styles.safeArea} edges={['top']}>
       <View style={styles.topBar}>
         <View>
           <Text style={styles.greeting}>{getGreeting()}</Text>
@@ -55,6 +55,7 @@ export const HomeScreen: React.FC = () => {
         </View>
         <View style={styles.topActions}>
           <TouchableOpacity
+            testID="home-notification-button"
             style={styles.iconButton}
             onPress={() => navigation.navigate('Notifications')}
           >
@@ -66,6 +67,7 @@ export const HomeScreen: React.FC = () => {
             )}
           </TouchableOpacity>
           <TouchableOpacity
+            testID="home-search-button"
             style={styles.iconButton}
             onPress={() => navigation.navigate('Products')}
           >
@@ -87,6 +89,7 @@ export const HomeScreen: React.FC = () => {
             <Text style={styles.bannerTag}>AI 추천</Text>
             <Text style={styles.bannerTitle}>오늘의 제철 농산물{'\n'}최대 30% 할인</Text>
             <TouchableOpacity
+              testID="home-banner-button"
               style={styles.bannerButton}
               onPress={() => navigation.navigate('Products')}
             >

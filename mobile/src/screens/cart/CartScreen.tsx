@@ -45,6 +45,7 @@ export const CartScreen: React.FC = () => {
           <View style={styles.itemFooter}>
             <View style={styles.qtyControls}>
               <TouchableOpacity
+                testID={`cart-item-decrease-${item.id}`}
                 style={styles.qtyBtn}
                 onPress={() => {
                   if (item.quantity <= 1) {
@@ -58,6 +59,7 @@ export const CartScreen: React.FC = () => {
               </TouchableOpacity>
               <Text style={styles.qtyText}>{item.quantity}</Text>
               <TouchableOpacity
+                testID={`cart-item-increase-${item.id}`}
                 style={styles.qtyBtn}
                 onPress={() => updateQuantity(item.id, item.quantity + 1)}
               >
@@ -89,7 +91,7 @@ export const CartScreen: React.FC = () => {
   }
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <SafeAreaView testID="screen-cart" style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <Text style={styles.title}>장바구니</Text>
       </View>
@@ -125,6 +127,7 @@ export const CartScreen: React.FC = () => {
               fullWidth
               size="lg"
               style={styles.checkoutButton}
+              testID="checkout-button"
             />
           </View>
         </>

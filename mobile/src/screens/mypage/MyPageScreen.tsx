@@ -79,7 +79,7 @@ export const MyPageScreen: React.FC = () => {
   ];
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <SafeAreaView testID="screen-mypage" style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <Text style={styles.title}>마이페이지</Text>
       </View>
@@ -131,6 +131,7 @@ export const MyPageScreen: React.FC = () => {
               {group.items.map((item, index) => (
                 <TouchableOpacity
                   key={item.label}
+                  testID={`mypage-menu-${item.label}`}
                   style={[styles.menuItem, index < group.items.length - 1 && styles.menuItemBorder]}
                   onPress={item.onPress}
                   activeOpacity={0.7}

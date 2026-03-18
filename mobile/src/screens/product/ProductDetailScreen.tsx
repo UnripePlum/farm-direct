@@ -77,13 +77,13 @@ export const ProductDetailScreen: React.FC = () => {
   const description = product.description ?? '';
 
   return (
-    <SafeAreaView style={styles.container} edges={['bottom']}>
+    <SafeAreaView testID="screen-product-detail" style={styles.container} edges={['bottom']}>
       <View style={styles.navBar}>
-        <TouchableOpacity style={styles.navButton} onPress={() => navigation.goBack()}>
+        <TouchableOpacity testID="back-button" style={styles.navButton} onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color={Colors.text} />
         </TouchableOpacity>
         <View style={styles.navActions}>
-          <TouchableOpacity style={styles.navButton} onPress={handleShare}>
+          <TouchableOpacity testID="share-button" style={styles.navButton} onPress={handleShare}>
             <Ionicons name="share-outline" size={22} color={Colors.text} />
           </TouchableOpacity>
           <TouchableOpacity style={styles.navButton} onPress={() => navigation.navigate('Cart')}>
@@ -138,9 +138,9 @@ export const ProductDetailScreen: React.FC = () => {
           </View>
 
           {/* Title & Price */}
-          <Text style={styles.productName}>{product.name}</Text>
+          <Text testID="product-name-text" style={styles.productName}>{product.name}</Text>
           <View style={styles.priceRow}>
-            <Text style={styles.price}>{formatPrice(product.price)}</Text>
+            <Text testID="price-text" style={styles.price}>{formatPrice(product.price)}</Text>
           </View>
 
           {/* AI Price Suggestion */}
@@ -241,6 +241,7 @@ export const ProductDetailScreen: React.FC = () => {
             onPress={handleAddToCart}
             disabled={!product.is_active || product.stock === 0}
             style={styles.cartBtn}
+            testID="add-to-cart-button"
           />
           <Button
             title={`${formatPrice(product.price * quantity)} 구매`}

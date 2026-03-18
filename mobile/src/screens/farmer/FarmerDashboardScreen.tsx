@@ -72,7 +72,7 @@ export const FarmerDashboardScreen: React.FC = () => {
   if (isLoading) return <LoadingSpinner fullScreen message="대시보드를 불러오는 중..." />;
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <SafeAreaView testID="screen-farmer-dashboard" style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <View>
           <Text style={styles.greeting}>농부 대시보드</Text>
@@ -100,7 +100,7 @@ export const FarmerDashboardScreen: React.FC = () => {
           <Text style={styles.sectionTitle}>빠른 메뉴</Text>
           <View style={styles.quickGrid}>
             {quickActions.map((action, i) => (
-              <TouchableOpacity key={i} style={styles.quickItem} onPress={action.onPress} activeOpacity={0.7}>
+              <TouchableOpacity key={i} testID={`farmer-quick-action-${i}`} style={styles.quickItem} onPress={action.onPress} activeOpacity={0.7}>
                 <View style={[styles.quickIcon, { backgroundColor: action.bg }]}>
                   <Ionicons name={action.icon as any} size={26} color={action.color} />
                 </View>

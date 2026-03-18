@@ -16,6 +16,7 @@ interface ProductCardProps {
   onPress: () => void;
   onAddToCart?: () => void;
   horizontal?: boolean;
+  testID?: string;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({
@@ -23,12 +24,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onPress,
   onAddToCart,
   horizontal = false,
+  testID,
 }) => {
   const imageUri = product.photos?.[0];
 
   if (horizontal) {
     return (
-      <TouchableOpacity style={styles.horizontalCard} onPress={onPress} activeOpacity={0.85}>
+      <TouchableOpacity testID={testID} style={styles.horizontalCard} onPress={onPress} activeOpacity={0.85}>
         <View style={styles.horizontalImageWrapper}>
           {imageUri ? (
             <Image source={{ uri: imageUri }} style={styles.horizontalImage} resizeMode="cover" />
@@ -52,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   }
 
   return (
-    <TouchableOpacity style={styles.card} onPress={onPress} activeOpacity={0.85}>
+    <TouchableOpacity testID={testID} style={styles.card} onPress={onPress} activeOpacity={0.85}>
       <View style={styles.imageWrapper}>
         {imageUri ? (
           <Image source={{ uri: imageUri }} style={styles.image} resizeMode="cover" />

@@ -103,7 +103,7 @@ export const CheckoutScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+    <SafeAreaView testID="screen-checkout" style={styles.container} edges={['top', 'bottom']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backBtn}>
           <Ionicons name="arrow-back" size={24} color={Colors.text} />
@@ -138,6 +138,7 @@ export const CheckoutScreen: React.FC = () => {
               onChangeText={(v) => updateField('shipping_name', v)}
               error={errors.shipping_name}
               leftIcon="person-outline"
+              testID="checkout-name-input"
             />
             <Input
               label="연락처"
@@ -147,6 +148,7 @@ export const CheckoutScreen: React.FC = () => {
               keyboardType="phone-pad"
               error={errors.shipping_phone}
               leftIcon="call-outline"
+              testID="checkout-phone-input"
             />
             <Input
               label="배송 주소"
@@ -155,6 +157,7 @@ export const CheckoutScreen: React.FC = () => {
               onChangeText={(v) => updateField('shipping_address', v)}
               error={errors.shipping_address}
               leftIcon="location-outline"
+              testID="checkout-address-input"
             />
           </View>
 
@@ -194,6 +197,7 @@ export const CheckoutScreen: React.FC = () => {
             loading={isLoading}
             fullWidth
             size="lg"
+            testID="checkout-pay-button"
           />
         </View>
       </KeyboardAvoidingView>

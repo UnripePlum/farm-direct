@@ -26,7 +26,7 @@ export const RoleSelectScreen: React.FC = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View testID="screen-role-select" style={styles.container}>
       <View style={styles.header}>
         <View style={styles.avatarWrapper}>
           <Ionicons name="person" size={40} color={Colors.primary} />
@@ -38,6 +38,7 @@ export const RoleSelectScreen: React.FC = () => {
 
       <View style={styles.cards}>
         <TouchableOpacity
+          testID="role-farmer-button"
           style={[styles.roleCard, selectedRole === 'farmer' && styles.roleCardSelected]}
           onPress={() => setSelectedRole('farmer')}
           activeOpacity={0.85}
@@ -63,6 +64,7 @@ export const RoleSelectScreen: React.FC = () => {
         </TouchableOpacity>
 
         <TouchableOpacity
+          testID="role-consumer-button"
           style={[styles.roleCard, selectedRole === 'consumer' && styles.roleCardSelected]}
           onPress={() => setSelectedRole('consumer')}
           activeOpacity={0.85}

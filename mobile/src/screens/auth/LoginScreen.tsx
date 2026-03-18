@@ -58,6 +58,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
+      testID="screen-login"
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
@@ -84,6 +85,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             autoCapitalize="none"
             leftIcon="mail-outline"
             error={errors.email}
+            testID="login-email-input"
           />
           <Input
             label="비밀번호"
@@ -93,9 +95,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             isPassword
             leftIcon="lock-closed-outline"
             error={errors.password}
+            testID="login-password-input"
           />
 
           <TouchableOpacity
+            testID="login-forgot-button"
             style={styles.forgotPassword}
             onPress={async () => {
               if (!email) {
@@ -120,6 +124,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
             fullWidth
             size="lg"
             style={styles.loginButton}
+            testID="login-submit-button"
           />
 
           <View style={styles.dividerRow}>
@@ -130,6 +135,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
           <View style={styles.socialButtons}>
             <TouchableOpacity
+              testID="login-kakao-button"
               style={[styles.socialBtn, styles.kakaoBtn]}
               onPress={() => handleSocialLogin('kakao')}
             >
@@ -137,6 +143,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
               <Text style={styles.kakaoText}>카카오로 계속하기</Text>
             </TouchableOpacity>
             <TouchableOpacity
+              testID="login-google-button"
               style={[styles.socialBtn, styles.googleBtn]}
               onPress={() => handleSocialLogin('google')}
             >
@@ -148,7 +155,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>아직 계정이 없으신가요? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+          <TouchableOpacity testID="login-signup-link" onPress={() => navigation.navigate('SignUp')}>
             <Text style={styles.signUpLink}>회원가입</Text>
           </TouchableOpacity>
         </View>

@@ -67,6 +67,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView
+      testID="screen-signup"
       style={styles.container}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
     >
@@ -91,6 +92,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
             onChangeText={(v) => updateField('name', v)}
             leftIcon="person-outline"
             error={errors.name}
+            testID="signup-name-input"
           />
           <Input
             label="이메일"
@@ -101,6 +103,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
             autoCapitalize="none"
             leftIcon="mail-outline"
             error={errors.email}
+            testID="signup-email-input"
           />
           <Input
             label="휴대폰 번호"
@@ -109,6 +112,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
             onChangeText={(v) => updateField('phone', v)}
             keyboardType="phone-pad"
             leftIcon="call-outline"
+            testID="signup-phone-input"
           />
           <Input
             label="비밀번호"
@@ -118,6 +122,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
             isPassword
             leftIcon="lock-closed-outline"
             error={errors.password}
+            testID="signup-password-input"
           />
           <Input
             label="비밀번호 확인"
@@ -127,6 +132,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
             isPassword
             leftIcon="lock-closed-outline"
             error={errors.confirmPassword}
+            testID="signup-confirm-password-input"
           />
 
           <Text style={styles.terms}>
@@ -141,6 +147,7 @@ export const SignUpScreen: React.FC<SignUpScreenProps> = ({ navigation }) => {
             fullWidth
             size="lg"
             style={styles.signUpButton}
+            testID="signup-submit-button"
           />
         </View>
 

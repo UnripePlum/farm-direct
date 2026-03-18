@@ -74,7 +74,7 @@ export const AddProductScreen: React.FC = () => {
   };
 
   return (
-    <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
+    <SafeAreaView testID="screen-add-product" style={styles.container} edges={['top', 'bottom']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={24} color={Colors.text} />
@@ -99,6 +99,7 @@ export const AddProductScreen: React.FC = () => {
             onChangeText={(v) => updateField('name', v)}
             error={errors.name}
             leftIcon="cube-outline"
+            testID="add-product-name-input"
           />
           <Input
             label="설명"
@@ -106,6 +107,7 @@ export const AddProductScreen: React.FC = () => {
             value={form.description}
             onChangeText={(v) => updateField('description', v)}
             leftIcon="document-text-outline"
+            testID="add-product-description-input"
           />
           <Input
             label="가격 (원)"
@@ -115,6 +117,7 @@ export const AddProductScreen: React.FC = () => {
             keyboardType="numeric"
             error={errors.price}
             leftIcon="pricetag-outline"
+            testID="add-product-price-input"
           />
           <Input
             label="재고"
@@ -124,6 +127,7 @@ export const AddProductScreen: React.FC = () => {
             keyboardType="numeric"
             error={errors.stock}
             leftIcon="layers-outline"
+            testID="add-product-stock-input"
           />
           <Input
             label="지역"
@@ -131,6 +135,7 @@ export const AddProductScreen: React.FC = () => {
             value={form.region}
             onChangeText={(v) => updateField('region', v)}
             leftIcon="location-outline"
+            testID="add-product-region-input"
           />
 
           {/* Category Selection */}
@@ -179,6 +184,7 @@ export const AddProductScreen: React.FC = () => {
             loading={isLoading}
             fullWidth
             size="lg"
+            testID="add-product-submit-button"
           />
         </View>
       </KeyboardAvoidingView>

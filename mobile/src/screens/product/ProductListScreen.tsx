@@ -47,12 +47,13 @@ export const ProductListScreen: React.FC = () => {
   };
 
   const renderProduct = useCallback(
-    ({ item }: { item: Product }) => (
+    ({ item, index }: { item: Product; index: number }) => (
       <View style={styles.productWrapper}>
         <ProductCard
           product={item}
           onPress={() => navigation.navigate('ProductDetail', { productId: item.id })}
           onAddToCart={() => handleAddToCart(item.id)}
+          testID={`product-item-${index}`}
         />
       </View>
     ),
@@ -68,10 +69,10 @@ export const ProductListScreen: React.FC = () => {
   );
 
   return (
-    <SafeAreaView style={styles.container} edges={['top']}>
+    <SafeAreaView testID="screen-product-list" style={styles.container} edges={['top']}>
       <View style={styles.header}>
         <Text style={styles.title}>농산물 마켓</Text>
-        <TouchableOpacity style={styles.filterIcon} onPress={() => setShowFilter(!showFilter)}>
+        <TouchableOpacity testID="product-filter-button" style={styles.filterIcon} onPress={() => setShowFilter(!showFilter)}>
           <Ionicons name="options-outline" size={22} color={Colors.text} />
         </TouchableOpacity>
       </View>
@@ -79,6 +80,7 @@ export const ProductListScreen: React.FC = () => {
       <View style={styles.searchBar}>
         <Ionicons name="search-outline" size={18} color={Colors.textSecondary} />
         <TextInput
+          testID="product-search-input"
           style={styles.searchInput}
           placeholder="상품 검색..."
           placeholderTextColor={Colors.textLight}

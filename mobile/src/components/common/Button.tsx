@@ -34,6 +34,7 @@ export const Button: React.FC<ButtonProps> = ({
   style,
   textStyle,
   disabled,
+  testID,
   ...rest
 }) => {
   const buttonStyle = [
@@ -53,7 +54,7 @@ export const Button: React.FC<ButtonProps> = ({
   ];
 
   return (
-    <TouchableOpacity style={buttonStyle} disabled={disabled || loading} activeOpacity={0.8} {...rest}>
+    <TouchableOpacity style={buttonStyle} disabled={disabled || loading} activeOpacity={0.8} testID={testID} {...rest}>
       {loading ? (
         <ActivityIndicator
           size="small"

@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd /Users/unripeplum/projects/farm-direct && git add e2e/playwright.config.ts e2e/tests/full-flow.spec.ts e2e/package.json e2e/package-lock.json && git commit -m \\\"$(cat <<'EOF'\\ntest: Pla...",
+  "error": "Exit code 128\nfatal: pathspec 'e2e/package.json' did not match any files",
+  "timestamp": "2026-03-18T03:05:46.190Z",
+  "retry_count": 1
+}

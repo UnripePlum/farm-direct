@@ -1,0 +1,7 @@
+{
+  "tool_name": "Bash",
+  "tool_input_preview": "{\"command\":\"cd /Users/unripeplum/projects/farm-direct/backend && python3 -c \\\"\\nfrom app.config import settings\\nprint(f'USE_REAL_SERVICES = {settings.USE_REAL_SERVICES}')\\n\\nfrom app.services.contain...",
+  "error": "Exit code 1\nTraceback (most recent call last):\n  File \"<string>\", line 5, in <module>\n  File \"/Users/unripeplum/projects/farm-direct/backend/app/services/__init__.py\", line 4, in <module>\n    from app.services.notification_service import (\n  File \"/Users/unripeplum/projects/farm-direct/backend/app/services/notification_service.py\", line 7, in <module>\n    class NotificationPushService(ABC):\n  File \"/Users/unripeplum/projects/farm-direct/backend/app/services/notification_service.py\", line 9, in N...",
+  "timestamp": "2026-03-17T18:09:56.478Z",
+  "retry_count": 2
+}

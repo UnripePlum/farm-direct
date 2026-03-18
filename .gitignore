@@ -1,0 +1,47 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Build
+dist/
+build/
+*.egg-info/
+
+# Environment
+.env
+.env.local
+*.local
+
+# Firebase credentials
+firebase-credentials.json
+google-services.json
+GoogleService-Info.plist
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Expo
+.expo/
+mobile/.expo/
+
+# OMC state (development artifacts)
+.omc/state/
+backend/.omc/
+
+# Data
+backend/data/
+
+# ML models
+*.pkl
+*.h5
+*.pt

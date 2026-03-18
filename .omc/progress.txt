@@ -1,0 +1,17 @@
+# FarmDirect Progress Log
+
+## Iteration 1 - Full Implementation
+- Started: 2026-03-18
+- PRD created with 6 user stories
+- US-001 through US-006 implemented via parallel agents (backend + mobile)
+- Backend: 37 Python files (FastAPI + SQLAlchemy + ML)
+- Mobile: 55 TS/TSX files (React Native Expo + all screens/components)
+- Added categories router and seed data/training script
+
+## Iteration 2 - Architect Review Fixes
+- Architect review: REJECTED with 2 blocking + 2 non-blocking issues
+- Fix 1 (Critical): Implemented PG payment amount verification via PortOne API at payments.py
+- Fix 2 (Blocking): Added POST /api/auth/social-login backend endpoint + wired mobile Kakao/Google buttons
+- Fix 3 (Moderate): Added purchase verification (completed order check) to review creation
+- Fix 4 (Minor): FarmerDashboard now fetches real order data for SalesStats instead of hardcoded values
+- All Python files compile, TypeScript: 0 errors

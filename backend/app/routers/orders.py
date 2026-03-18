@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
+from sqlalchemy.orm import selectinload
 from typing import List
 from uuid import UUID
 from decimal import Decimal
@@ -74,7 +75,11 @@ async def create_order(
         product.stock -= quantity
 
     await db.flush()
-    await db.refresh(order)
+    # Re-query with eager loading to include items in response
+    result = await db.execute(
+        select(Order).where(Order.id == order.id).options(selectinload(Order.items))
+    )
+    order = result.scalar_one()
     return order
 
 
@@ -91,6 +96,7 @@ async def list_my_orders(
     result = await db.execute(
         select(Order)
         .where(Order.user_id == current_user.id)
+        .options(selectinload(Order.items))
         .order_by(Order.created_at.desc())
     )
     return result.scalars().all()
@@ -107,7 +113,7 @@ async def get_order(
     db: AsyncSession = Depends(get_db),
 ) -> OrderResponse:
     """특정 주문의 상세 정보를 조회합니다."""
-    result = await db.execute(select(Order).where(Order.id == order_id))
+    result = await db.execute(select(Order).where(Order.id == order_id).options(selectinload(Order.items)))
     order = result.scalar_one_or_none()
 
     if order is None:
@@ -134,7 +140,7 @@ async def update_order_status(
     주문 상태를 변경합니다. 농부 계정만 사용 가능합니다.
     processing → shipped → completed 순서로 진행됩니다.
     """
-    result = await db.execute(select(Order).where(Order.id == order_id))
+    result = await db.execute(select(Order).where(Order.id == order_id).options(selectinload(Order.items)))
     order = result.scalar_one_or_none()
 
     if order is None:
@@ -204,7 +210,7 @@ async def cancel_order(
     주문을 취소합니다. 대기(pending) 또는 결제완료(paid) 상태의 주문만 취소 가능합니다.
     취소 시 재고가 복원됩니다.
     """
-    result = await db.execute(select(Order).where(Order.id == order_id))
+    result = await db.execute(select(Order).where(Order.id == order_id).options(selectinload(Order.items)))
     order = result.scalar_one_or_none()
 
     if order is None:
